@@ -9,8 +9,10 @@
   </head>
   <body>
 	<div style="padding: 40px">
-    <div id="unity-container" class="unity-desktop" style="background: black">
-      <canvas id="unity-canvas"></canvas>
+    <div id="unity-container" class="unity-desktop">
+	  <div style="display: flex; flex-direction: row; justify-content: center;">
+		<canvas id="unity-canvas"></canvas>
+	  </div>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -100,8 +102,16 @@
       }
 	  
 	  setTimeout( () => {
-		const w = canvas.clientWidth;
-		const h = canvas.clientHeight;
+		let w = canvas.clientWidth;
+		let h = canvas.clientHeight;
+		
+		if (w > window.screen.width - 100) {
+			w = window.screen.width - 100;
+		}
+		
+		if (h > window.screen.height - 100) {
+			h = window.screen.height - 100;
+		}
 		
 		const how = 9/16;
 		const woh = 16/9;
